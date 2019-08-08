@@ -6,9 +6,12 @@ import (
 	"log"
 )
 
-func SyncAndSeed() {
+var db *sql.DB
 
-	db, err := sql.Open("postgres", "user=postgres dbname=user_db sslmode=disable")
+func SyncAndSeed() {
+	var err error
+
+	db, err = sql.Open("postgres", "user=postgres dbname=user_db sslmode=disable")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -28,8 +31,8 @@ func SyncAndSeed() {
 		log.Fatal(err)
 	}
 
-	const createUserQry = `INSERT INTO users (id, email) 
-		VALUES (1, 'lexbedwell@gmail.com')
+	const createUserQry = `INSERT INTO users(email) 
+		VALUES ('lexbedwell@gmail.com')
 		ON CONFLICT (id) 
 		DO NOTHING;`
 
@@ -40,4 +43,20 @@ func SyncAndSeed() {
 
 	log.Println("database sync and seed completed")
 
+}
+
+func GetUserFromId(userId string) (string, error) {
+	var email string
+	var err error
+	err = db.QueryRow(`SELECT email FROM users WHERE id=$1`, userId).Scan(&email)
+	if err != nil {
+		return "", err
+	}
+	return email, err
+}
+
+func CreateUser (email string) error {
+	var err error
+	_ , err = db.Exec("INSERT INTO users(email) VALUES($1)", email)
+	return err
 }
