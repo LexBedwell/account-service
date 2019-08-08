@@ -19,9 +19,9 @@ func SyncAndSeed() {
 	}
 
 	const createUserTableQry = `CREATE TABLE IF NOT EXISTS users (
-	    id serial PRIMARY KEY,
-	    email VARCHAR (40) UNIQUE NOT NULL
-  		);`
+		id serial PRIMARY KEY,
+		email VARCHAR (40) UNIQUE NOT NULL
+		);`
 
 	_, err = db.Exec(createUserTableQry)
 	if err != nil {
@@ -29,9 +29,9 @@ func SyncAndSeed() {
 	}
 
 	const createUserQry = `insert into users (id, email) 
-        values (1, 'lexbedwell@gmail.com')
-        ON CONFLICT (id) 
-        DO NOTHING;`
+		values (1, 'lexbedwell@gmail.com')
+		ON CONFLICT (id) 
+		DO NOTHING;`
 
 	_, err = db.Exec(createUserQry)
 	if err != nil {
