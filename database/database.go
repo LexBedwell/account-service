@@ -21,7 +21,7 @@ func SyncAndSeed() {
 	const createUserTableQry = `CREATE TABLE IF NOT EXISTS users (
 	    id serial PRIMARY KEY,
 	    email VARCHAR (40) UNIQUE NOT NULL
-    );`
+  		);`
 
 	_, err = db.Exec(createUserTableQry)
 	if err != nil {
