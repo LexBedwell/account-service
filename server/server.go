@@ -2,7 +2,6 @@ package server
 
 import (
 	"encoding/json"
-	"fmt"
 	"github.com/lexbedwell/account-service/database"
 	"log"
 	"net/http"
@@ -36,7 +35,7 @@ func Initialize() {
 
 	http.ListenAndServe(PORT, nil)
 
-	fmt.Println("now listening on PORT", PORT)
+	log.Println("now listening on PORT", PORT)
 }
 
 func getPongFromPing(w http.ResponseWriter, _ *http.Request) {

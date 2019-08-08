@@ -33,7 +33,7 @@ func SyncAndSeed() {
 
 	const createUserQry = `INSERT INTO users(email) 
 		VALUES ('lexbedwell@gmail.com')
-		ON CONFLICT (id) 
+		ON CONFLICT (email) 
 		DO NOTHING;`
 
 	_, err = db.Exec(createUserQry)
