@@ -28,8 +28,8 @@ func SyncAndSeed() {
 		log.Fatal(err)
 	}
 
-	const createUserQry = `insert into users (id, email) 
-		values (1, 'lexbedwell@gmail.com')
+	const createUserQry = `INSERT INTO users (id, email) 
+		VALUES (1, 'lexbedwell@gmail.com')
 		ON CONFLICT (id) 
 		DO NOTHING;`
 
