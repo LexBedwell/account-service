@@ -55,7 +55,6 @@ func getEmailFromId(w http.ResponseWriter, r *http.Request) {
 	error := ""
 	ids, ok := r.URL.Query()["id"]
 	if !ok || len(ids[0]) < 1 {
-		log.Println("URL parameter id is missing")
 		http.Error(w, http.StatusText(400), 400)
 		return
 	}
