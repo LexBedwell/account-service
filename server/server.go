@@ -3,7 +3,6 @@ package server
 import (
 	"encoding/json"
 	"github.com/lexbedwell/account-service/database"
-	"log"
 	"net/http"
 )
 
@@ -30,12 +29,11 @@ func Initialize() {
 	PORT := ":8080"
 
 	http.HandleFunc("/ping", getPongFromPing)
-	http.HandleFunc("/id/", getEmailFromId)
+	http.HandleFunc("/user/", getInfoFromId)
 	http.HandleFunc("/create", postUser)
 
 	http.ListenAndServe(PORT, nil)
 
-	log.Println("now listening on PORT", PORT)
 }
 
 func getPongFromPing(w http.ResponseWriter, _ *http.Request) {
@@ -51,7 +49,7 @@ func getPongFromPing(w http.ResponseWriter, _ *http.Request) {
 	w.Write(pingResponseJson)
 }
 
-func getEmailFromId(w http.ResponseWriter, r *http.Request) {
+func getInfoFromId(w http.ResponseWriter, r *http.Request) {
 	error := ""
 	ids, ok := r.URL.Query()["id"]
 	if !ok || len(ids[0]) < 1 {
@@ -59,12 +57,12 @@ func getEmailFromId(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	email, err := database.GetUserFromId(ids[0])
+	info, err := database.GetUserFromId(ids[0])
 	if err != nil {
 		error = err.Error()
 	}
 
-	idResponse := getIdResponse{ids[0], email, error}
+	idResponse := getIdResponse{ids[0], info, error}
 	idResponseJson, err := json.Marshal(idResponse)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
