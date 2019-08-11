@@ -30,7 +30,7 @@ func Initialize() {
 
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
-		PORT = ":8080"
+		PORT = "8080"
 	}
 
 	log.Println("Now listening on port", PORT)
@@ -39,7 +39,7 @@ func Initialize() {
 	http.HandleFunc("/user/", getInfoFromId)
 	http.HandleFunc("/create", postUser)
 
-	http.ListenAndServe(PORT, nil)
+	http.ListenAndServe(":" + PORT, nil)
 
 }
 
