@@ -33,7 +33,7 @@ func Initialize() {
 		PORT = ":8080"
 	}
 
-	log.Println("Now listening on port ", PORT)
+	log.Println("Now listening on port", PORT)
 
 	http.HandleFunc("/ping", getPongFromPing)
 	http.HandleFunc("/user/", getInfoFromId)

@@ -17,7 +17,7 @@ func SyncAndSeed() {
 		DATABASE_URL = "user=postgres dbname=user_db sslmode=disable"
 	}
 
-	log.Println("Connecting to DATABASE_URL of: ", DATABASE_URL)
+	log.Println("Connecting to DATABASE_URL at", DATABASE_URL)
 	
 	db, err = sql.Open("postgres", DATABASE_URL)
 	if err != nil {
