@@ -3,7 +3,9 @@ package server
 import (
 	"encoding/json"
 	"github.com/lexbedwell/account-service/database"
+	"log"
 	"net/http"
+	"os"
 )
 
 type postUserRequest struct {
@@ -26,7 +28,12 @@ type postUserResponse struct {
 
 func Initialize() {
 
-	PORT := ":8080"
+	PORT := os.Getenv("PORT")
+	if PORT == "" {
+		PORT = ":8080"
+	}
+
+	log.Println("Now listening on port: ", PORT)
 
 	http.HandleFunc("/ping", getPongFromPing)
 	http.HandleFunc("/user/", getInfoFromId)
