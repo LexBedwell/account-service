@@ -35,6 +35,7 @@ func Initialize() {
 
 	log.Println("Now listening on port", PORT)
 
+	http.HandleFunc("/", getPongFromPing)
 	http.HandleFunc("/ping", getPongFromPing)
 	http.HandleFunc("/user/", getInfoFromId)
 	http.HandleFunc("/create", postUser)
