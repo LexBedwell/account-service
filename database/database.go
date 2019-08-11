@@ -12,12 +12,12 @@ var db *sql.DB
 func SyncAndSeed() {
 	var err error
 
-	DATABASE_URL := os.Getenv("DATABSE_URL")
+	DATABASE_URL := os.Getenv("DATABASE_URL")
 	if DATABASE_URL == "" {
 		DATABASE_URL = "user=postgres dbname=user_db sslmode=disable"
 	}
 
-	log.Println("DATABASE_URL is: ", DATABASE_URL)
+	log.Println("Connecting to DATABASE_URL of: ", DATABASE_URL)
 	
 	db, err = sql.Open("postgres", DATABASE_URL)
 	if err != nil {
