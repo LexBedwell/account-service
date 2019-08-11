@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	_ "github.com/lib/pq"
 	"log"
+	"os"
 )
 
 var db *sql.DB
@@ -11,7 +12,12 @@ var db *sql.DB
 func SyncAndSeed() {
 	var err error
 
-	db, err = sql.Open("postgres", "user=postgres dbname=user_db sslmode=disable")
+	DATABASE_URL := os.Getenv("DATABSE_URL")
+	if DATABASE_URL == "" {
+		DATABASE_URL = "user=postgres dbname=user_db sslmode=disable"
+	}
+	
+	db, err = sql.Open("postgres", DATABASE_URL)
 	if err != nil {
 		log.Fatal(err)
 	}
