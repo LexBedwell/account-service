@@ -11,5 +11,5 @@ Utilizes Go and an accompanying PostgreSQL database.
 | Method | Route | Call Definition | Description
 | ------ | ----- | ----- | -----------
 | GET | /ping | server.getPongFromPing | Ping service
-| GET | /user/?id=$userId | server.getInfoFromId | Get account info from userId
+| GET | /user/?id=$userId | server.getInfoFromId | Get account information from userId
 | POST | /create | server.postUser | Create user
