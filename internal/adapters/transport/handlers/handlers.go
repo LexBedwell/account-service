@@ -2,11 +2,11 @@ package handlers
 
 import (
 	"context"
+	"github.com/lexbedwell/account-service/internal/adapters/transport/endpoints"
+	"github.com/lexbedwell/account-service/internal/usecase/service"
 	encoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/responses"
 	decoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/requests"
-	"github.com/lexbedwell/account-service/internal/adapters/transport/endpoints"
 	httptransport "github.com/go-kit/kit/transport/http"
-	"github.com/lexbedwell/account-service/internal/usecase/service"
 )
 
 var svc service.AccountService

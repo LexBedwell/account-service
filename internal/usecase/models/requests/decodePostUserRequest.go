@@ -2,8 +2,8 @@ package adapters
 
 import (
 	"context"
-	"net/http"
 	"encoding/json"
+	"net/http"
 )
 
 type PostUserRequest struct {
