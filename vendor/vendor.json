@@ -1,5 +1,10 @@
 {
 	"comment": "",
+	"heroku": {
+		"install": [
+			"./..."
+		]
+	},
 	"ignore": "test",
 	"package": [
 		{
@@ -19,10 +24,11 @@
 			"path": "github.com/lib/pq/scram",
 			"revision": "3427c32cb71afc948325f299f040e53c1dd78979",
 			"revisionTime": "2019-07-16T17:26:55Z"
+		},
+		{
+			"path": "go-kit",
+			"revision": ""
 		}
 	],
-	"rootPath": "github.com/lexbedwell/account-service",
-	"heroku": {
-		"install": ["./..."]
-	}
+	"rootPath": "github.com/lexbedwell/account-service"
 }
