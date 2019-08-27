@@ -18,8 +18,8 @@ func main() {
     go database.SyncAndSeed()
 
     http.Handle("/", handlers.NewGetPongFromPingHandler(svc))
-	http.Handle("/ping", handlers.NewGetPongFromPingHandler(svc))
-	http.Handle("/user/", handlers.NewGetInfoFromIdHandler(svc))
+    http.Handle("/ping", handlers.NewGetPongFromPingHandler(svc))
+    http.Handle("/user/", handlers.NewGetInfoFromIdHandler(svc))
     http.Handle("/create", handlers.NewPostUserHandler(svc))
     
     PORT := os.Getenv("PORT")
