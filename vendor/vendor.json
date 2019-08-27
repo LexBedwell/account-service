@@ -3,6 +3,42 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "oqtNI+0KmQ+eZgH5FArkETtOoHE=",
+			"path": "github.com/go-kit/kit/endpoint",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "u9yPyzxDLfX3DomC0riuXvV2W6w=",
+			"path": "github.com/go-kit/kit/log",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "U3hqzroF3ax3Dd9P3EJ7/7Ot7jE=",
+			"path": "github.com/go-kit/kit/transport",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "5k+0cwz+Pxc5Zvre9F2ToxI3bRg=",
+			"path": "github.com/go-kit/kit/transport/http",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "g8yM1TRZyIjXtopiqbslzgLqtM0=",
+			"path": "github.com/go-logfmt/logfmt",
+			"revision": "07c9b44f60d7ffdfb7d8efe1ad539965737836dc",
+			"revisionTime": "2018-11-22T01:56:15Z"
+		},
+		{
+			"checksumSHA1": "abKzFXAn0KDr5U+JON1ZgJ2lUtU=",
+			"path": "github.com/kr/logfmt",
+			"revision": "b84e30acd515aadc4b783ad4ff83aff3299bdfe0",
+			"revisionTime": "2014-02-26T03:06:59Z"
+		},
+		{
 			"checksumSHA1": "GKTFbGomCP1fhH7mFecvwKvh7bc=",
 			"path": "github.com/lib/pq",
 			"revision": "78223426e7c66d631117c0a9da1b7f3fde4d23a5",
