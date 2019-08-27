@@ -6,7 +6,7 @@ import (
     "github.com/lexbedwell/account-service/internal/usecase/service"
     "log"
     "net/http"
-	"os"
+    "os"
 )
 
 func main() {
