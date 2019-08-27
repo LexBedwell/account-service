@@ -1,4 +1,4 @@
-# Account Service
+# Account Service Ver. 2
 
 Service that stores and updates customer account information for [BuyAndCell](https://github.com/LexBedwell/BuyAndCell).
 Utilizes Go and an accompanying PostgreSQL database.
