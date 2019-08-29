@@ -13,7 +13,8 @@ func main() {
     log.Println("starting account-service")
 
     var svc service.AccountService
-    svc = service.AccountService{DAO: database.NewDao()}
+    DAO := database.NewDao()
+    svc = service.AccountService{DAO: DAO}
 
     go database.SyncAndSeed()
 
@@ -25,10 +26,8 @@ func main() {
     PORT := os.Getenv("PORT")
 	if PORT == "" {
 		PORT = "8080"
-	}
-
+    }
+    
     http.ListenAndServe(":" + PORT, nil)
-
     log.Println("Now listening on port", PORT)
-
 }

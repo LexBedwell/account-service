@@ -69,8 +69,16 @@ func (_ *DAO) GetUserFromId(userId string) (string, error) {
 	return email, err
 }
 
-func (_ *DAO) CreateUser (email string) error {
+func (_ *DAO) CreateUser (email string) (string, error) {
+	var id string
 	var err error
 	_ , err = db.Exec("INSERT INTO users(email) VALUES($1)", email)
-	return err
+	if err != nil && err.Error() != "pq: duplicate key value violates unique constraint \"users_email_key\"" {
+		return "", err
+	}
+	err = db.QueryRow(`SELECT id FROM users WHERE email=$1`, email).Scan(&id)
+	if err != nil {
+		return "", err
+	}
+	return id, err
 }

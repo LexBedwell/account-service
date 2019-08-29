@@ -33,13 +33,15 @@ func MakeGetPongFromPingEndpoint(svc service.AccountService) endpoint.Endpoint {
 func MakePostUserEndpoint(svc service.AccountService) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		type postUserResponse struct {
-			Response   string `json:"response"`
+			Id   string `json:"id"`
+			Email   string `json:"email"`
+			Err string `json:"error"`
 		}
 		req := request.(adapters.PostUserRequest)
-		v, err := svc.PostUser(req.Email)
+		id, email, err := svc.PostUser(req.Email)
 		if err != nil {
-			return postUserResponse{Response: err.Error()}, nil
+			return postUserResponse{Id: "", Email: "", Err: err.Error()}, nil
 		}
-		return postUserResponse{Response: v}, nil
+		return postUserResponse{Id: id, Email: email, Err: ""}, nil
 	}
 }
