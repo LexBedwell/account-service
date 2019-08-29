@@ -13,8 +13,8 @@ func main() {
     log.Println("starting account-service")
 
     var svc service.AccountService
-    DAO := database.NewDao()
-    svc = service.AccountService{DAO: DAO}
+    dao := database.NewDao()
+    svc = service.AccountService{Dao: dao}
 
     go database.SyncAndSeed()
 
