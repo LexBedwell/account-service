@@ -24,8 +24,8 @@ func main() {
     http.Handle("/create", handlers.NewPostUserHandler(svc))
     
     PORT := os.Getenv("PORT")
-	if PORT == "" {
-		PORT = "8080"
+    if PORT == "" {
+        PORT = "8080"
     }
     
     http.ListenAndServe(":" + PORT, nil)
