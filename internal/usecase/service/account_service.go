@@ -1,10 +1,12 @@
 package service
 
+type DAOInterface interface {
+	GetUserFromId(string) (string, error)
+	CreateUser(string) (string, error)
+}
+
 type AccountService struct{
-	DAO interface{
-		GetUserFromId(string) (string, error)
-		CreateUser(string) error
-	}
+	DAO DAOInterface
 }
 
 func (_ *AccountService) GetPongFromPing() string {
@@ -16,11 +18,12 @@ func (svc *AccountService) GetInfoFromId(id string) (string, error) {
 	return info, err
 }
 
-func (svc *AccountService) PostUser(email string) (string, error) {
+func (svc *AccountService) PostUser(email string) (string, string, error) {
 	var err error
-	err = svc.DAO.CreateUser(email)
+	var id string
+	id, err = svc.DAO.CreateUser(email)
 	if err != nil {
-		return "", err
+		return "", "", err
 	}
-	return "created", err
+	return id, email, err
 }
