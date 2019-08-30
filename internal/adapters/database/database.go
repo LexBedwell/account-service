@@ -7,12 +7,12 @@ import (
 	"os"
 )
 
-type DAO struct{}
+type dao struct{}
 
 var db *sql.DB
 
-func NewDao() *DAO {
-	return &DAO{}
+func NewDao() *dao {
+	return &dao{}
 }
 
 func SyncAndSeed() {
@@ -59,7 +59,7 @@ func SyncAndSeed() {
 
 }
 
-func (_ *DAO) GetUserFromId(userId string) (string, error) {
+func (_ *dao) GetUserFromId(userId string) (string, error) {
 	var email string
 	var err error
 	err = db.QueryRow(`SELECT email FROM users WHERE id=$1`, userId).Scan(&email)
@@ -69,7 +69,7 @@ func (_ *DAO) GetUserFromId(userId string) (string, error) {
 	return email, err
 }
 
-func (_ *DAO) CreateUser (email string) (string, error) {
+func (_ *dao) CreateUser (email string) (string, error) {
 	var id string
 	var err error
 	_ , err = db.Exec("INSERT INTO users(email) VALUES($1)", email)
