@@ -12,11 +12,11 @@ import (
 func main() {
     log.Println("starting account-service")
 
+    go database.SyncAndSeed()
+
     var svc service.AccountService
     dao := database.NewDao()
     svc = service.AccountService{Dao: dao}
-
-    go database.SyncAndSeed()
 
     http.Handle("/", handlers.NewGetPongFromPingHandler(svc))
     http.Handle("/ping", handlers.NewGetPongFromPingHandler(svc))
