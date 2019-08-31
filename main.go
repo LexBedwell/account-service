@@ -27,7 +27,8 @@ func main() {
     if PORT == "" {
         PORT = "8080"
     }
-    
+
+    log.Println("Listening on port", PORT)
     http.ListenAndServe(":" + PORT, nil)
-    log.Println("Now listening on port", PORT)
+
 }
