@@ -1,12 +1,18 @@
 package service
 
-type daoInterface interface {
+type DaoInterface interface {
 	GetUserFromId(string) (string, error)
 	CreateUser(string) (string, error)
 }
 
 type AccountService struct{
-	Dao daoInterface
+	Dao DaoInterface
+}
+
+type AccountServiceInterface interface {
+	GetPongFromPing() (string)
+	GetInfoFromId(string) (string, error)
+	PostUser(string) (string, string, error)
 }
 
 func (_ *AccountService) GetPongFromPing() string {

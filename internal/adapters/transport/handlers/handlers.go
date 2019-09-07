@@ -4,16 +4,18 @@ import (
 	"context"
 	"github.com/lexbedwell/account-service/internal/adapters/transport/endpoints"
 	"github.com/lexbedwell/account-service/internal/usecase/service"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 	encoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/responses"
 	decoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/requests"
 	httptransport "github.com/go-kit/kit/transport/http"
+	"net/http"
 )
 
 var svc service.AccountService
 
 type Endpoint func(ctx context.Context, request interface{}) (response interface{}, err error)
 
-func NewGetPongFromPingHandler(svc service.AccountService) *httptransport.Server {
+func NewGetPongFromPingHandler(svc service.AccountServiceInterface) *httptransport.Server {
 	return httptransport.NewServer(
 		endpoints.MakeGetPongFromPingEndpoint(svc),
 		decoderAdapters.DecodeGetPongFromPingRequest,
@@ -21,7 +23,7 @@ func NewGetPongFromPingHandler(svc service.AccountService) *httptransport.Server
 	)
 }
 
-func NewPostUserHandler(svc service.AccountService) *httptransport.Server {
+func NewPostUserHandler(svc service.AccountServiceInterface) *httptransport.Server {
 	return httptransport.NewServer(
 		endpoints.MakePostUserEndpoint(svc),
 		decoderAdapters.DecodePostUserRequest,
@@ -29,10 +31,14 @@ func NewPostUserHandler(svc service.AccountService) *httptransport.Server {
 	)
 }
 
-func NewGetInfoFromIdHandler(svc service.AccountService) *httptransport.Server {
+func NewGetInfoFromIdHandler(svc service.AccountServiceInterface) *httptransport.Server {
 	return httptransport.NewServer(
 		endpoints.MakeGetInfoFromIdEndpoint(svc),
 		decoderAdapters.DecodeGetInfoFromIdRequest,
 		encoderAdapters.EncodeResponse,
 	)
+}
+
+func NewPrometheusHandler() http.Handler {
+	return promhttp.Handler()
 }

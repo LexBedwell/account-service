@@ -10,6 +10,7 @@ Utilizes Go and an accompanying PostgreSQL database.
 
 | Method | Route | Call Definition | Description
 | ------ | ----- | ----- | -----------
-| GET | /ping | server.getPongFromPing | Ping service
-| GET | /user/?id=$userId | server.getInfoFromId | Get account info from userId
-| POST | /create | server.postUser | Create user
+| GET | /metrics | handlers.NewPrometheusHandler | Metrics for Prometheus
+| GET | /ping | handlers.NewGetPongFromPingHandler | Ping service
+| GET | /user/?id=$userId | handlers.NewGetInfoFromIdHandler | Get account info from userId
+| POST | /create | handlers.NewPostUserHandler | Create user
