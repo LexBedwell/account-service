@@ -7,7 +7,7 @@ import (
 	"github.com/lexbedwell/account-service/internal/usecase/models/requests"
 )
 
-func MakeGetInfoFromIdEndpoint(svc service.AccountService) endpoint.Endpoint {
+func MakeGetInfoFromIdEndpoint(svc service.AccountServiceInterface) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		type getIdResponse struct {
 			Id   string `json:"id"`
@@ -20,7 +20,7 @@ func MakeGetInfoFromIdEndpoint(svc service.AccountService) endpoint.Endpoint {
 	}
 }
 
-func MakeGetPongFromPingEndpoint(svc service.AccountService) endpoint.Endpoint {
+func MakeGetPongFromPingEndpoint(svc service.AccountServiceInterface) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		type getPingResponse struct {
 			Response   string `json:"response"`
@@ -30,7 +30,7 @@ func MakeGetPongFromPingEndpoint(svc service.AccountService) endpoint.Endpoint {
 	}
 }
 
-func MakePostUserEndpoint(svc service.AccountService) endpoint.Endpoint {
+func MakePostUserEndpoint(svc service.AccountServiceInterface) endpoint.Endpoint {
 	return func(ctx context.Context, request interface{}) (interface{}, error) {
 		type postUserResponse struct {
 			Id   string `json:"id"`
