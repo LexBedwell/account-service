@@ -5,6 +5,7 @@ import (
 	"github.com/golang/mock/gomock"
 	"github.com/lexbedwell/account-service/mocks"
 	"github.com/lexbedwell/account-service/internal/usecase/service"
+	promhttp "github.com/prometheus/client_golang/prometheus/promhttp"
 	"net/http/httptest"	
 	"net/http"
 	"strings"
@@ -109,7 +110,7 @@ func TestSvcPostUserRoute(t *testing.T) {
 
 func TestGetMetricsRoute(t *testing.T) {
 
-	handler := NewPrometheusHandler()
+	handler := NewPrometheusHandler(promhttp.Handler())
 
 	responseRecorder := httptest.NewRecorder()
 	
