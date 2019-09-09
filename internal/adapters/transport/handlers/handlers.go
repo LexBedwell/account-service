@@ -4,7 +4,6 @@ import (
 	"context"
 	"github.com/lexbedwell/account-service/internal/adapters/transport/endpoints"
 	"github.com/lexbedwell/account-service/internal/usecase/service"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	encoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/responses"
 	decoderAdapters "github.com/lexbedwell/account-service/internal/usecase/models/requests"
 	httptransport "github.com/go-kit/kit/transport/http"
@@ -39,6 +38,6 @@ func NewGetInfoFromIdHandler(svc service.AccountServiceInterface) *httptransport
 	)
 }
 
-func NewPrometheusHandler() http.Handler {
-	return promhttp.Handler()
+func NewPrometheusHandler(handler http.Handler) http.Handler {
+	return handler
 }

@@ -21,6 +21,24 @@
 			"revisionTime": "2019-08-12T17:42:10Z"
 		},
 		{
+			"checksumSHA1": "E59QMw3cfqfhoq8FOqY+vNevAv4=",
+			"path": "github.com/go-kit/kit/metrics",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "8/FWJLeBQImh9GwFEfDFx7Lc0sc=",
+			"path": "github.com/go-kit/kit/metrics/internal/lv",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
+			"checksumSHA1": "hArYy708bvIGnxJIC/Tr/ehkUms=",
+			"path": "github.com/go-kit/kit/metrics/prometheus",
+			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",
+			"revisionTime": "2019-08-12T17:42:10Z"
+		},
+		{
 			"checksumSHA1": "U3hqzroF3ax3Dd9P3EJ7/7Ot7jE=",
 			"path": "github.com/go-kit/kit/transport",
 			"revision": "dc489b75b9cdbf29c739534c2aa777cabb034954",

@@ -1,6 +1,7 @@
 package logging
 
 import (
+	"os"
 	"time"
 	"github.com/lexbedwell/account-service/internal/usecase/service"
 	gokitlog "github.com/go-kit/kit/log"
@@ -59,4 +60,9 @@ func (mw *LoggingMiddleware) PostUser(email string) (outputId string, outputEmai
 
 	outputId, outputEmail, err = mw.Next.PostUser(email)
 	return
+}
+
+func NewLoggingMiddleware(svc service.AccountServiceInterface) *LoggingMiddleware {
+	logger := gokitlog.NewLogfmtLogger(os.Stderr)
+	return &LoggingMiddleware{logger, svc}
 }
