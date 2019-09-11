@@ -7,12 +7,6 @@ import (
 	gokitlog "github.com/go-kit/kit/log"
 )
 
-type LoggingMiddlewareInterface interface {
-	GetPongFromPing() (string)
-	GetInfoFromId(string) (string, error)
-	PostUser(string) (string, string, error)
-}
-
 type LoggingMiddleware struct {
 	Logger 	gokitlog.Logger
 	Next 	service.AccountServiceInterface
